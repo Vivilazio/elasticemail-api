@@ -1,6 +1,7 @@
-require 'json'
+require "elasticemail/version"
+require "json"
 
-module ElasticEmail
+module Elasticemail
   class API
     BASE_API_URI="https://api.elasticemail.com/v2".freeze
     def initialize apikey
@@ -29,9 +30,12 @@ module ElasticEmail
 
       uri = URI(url)
       uri.query = URI.encode_www_form(msg_info)
-
-      res = Net::HTTP.get_response(uri)
-      JSON.parse(res.body) if res.is_a?(Net::HTTPSuccess)
+      Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+        #request = Net::HTTP::Get.new uri
+        #response = http.request request
+        response = Net::HTTP.get_response(uri)
+        JSON.parse(response.body) if response.is_a?(Net::HTTPSuccess)
+      end
     end
 
 
