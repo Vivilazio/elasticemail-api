@@ -11,6 +11,7 @@ class ElasticemailTest < Minitest::Test
 
   def test_call_api
     elasticemail = ::Elasticemail::API.new "randomapi"
+    assert elasticemail
     response = elasticemail.contact_load_blocked
     assert response.is_a? Hash
   end
