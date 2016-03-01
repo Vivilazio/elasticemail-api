@@ -22,9 +22,14 @@ Or install it yourself as:
 
 instantiate an Elasticemail::API object with the api key created on elasticemail site.
 eg:
+```ruby
 elasticemail = Elasticemail::API "your_api_key"
-elasticemail.contact_load_blocked is the only public method available. It will load only contact that have complains:
+elasticemail.contact_load_blocked
+```
+#contact_load_blocked is the only public method available. It will load only contact that have complaints:
+```ruby
 { data: [{:email,...},..]}
+```
 this Hash is the exact json returned from the elasticemail api.
 
 ## Development
