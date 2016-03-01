@@ -24,11 +24,12 @@ instantiate an Elasticemail::API object with the api key created on elasticemail
 eg:
 ```ruby
 elasticemail = Elasticemail::API "your_api_key"
-elasticemail.contact_load_blocked
+result = elasticemail.contact_load_blocked
+puts result["data"]
 ```
 #contact_load_blocked is the only public method available. It will load only contact that have complaints:
 ```ruby
-{ data: [{:email,...},..]}
+{ "data": [{"email": ...,...},..]}
 ```
 this Hash is the exact json returned from the elasticemail api.
 
