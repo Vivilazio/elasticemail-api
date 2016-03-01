@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'elasticemail/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "elasticemail-api"
+  spec.name          = "elasticemail"
   spec.version       = Elasticemail::VERSION
   spec.authors       = ["Alessio Caradossi"]
   spec.email         = ["alessio@vivilazio.it"]
 
   spec.summary       = %q{A wrapper for elasticemail api.}
 #  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "https://github.com/Vivilazio/elasticemail-api"
+  spec.homepage      = "https://github.com/Vivilazio/elasticemail"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
