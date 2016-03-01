@@ -20,7 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+instantiate an Elasticemail::API object with the api key created on elasticemail site.
+eg:
+elasticemail = Elasticemail::API "your_api_key"
+elasticemail.contact_load_blocked is the only public method available. It will load only contact that have complains:
+{ data: [{:email,...},..]}
+this Hash is the exact json returned from the elasticemail api.
 
 ## Development
 
@@ -30,4 +35,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/elasticemail-api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/vivilazio/elasticemail-api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
