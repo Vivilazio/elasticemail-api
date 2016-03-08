@@ -9,10 +9,11 @@ class ElasticemailTest < Minitest::Test
     assert ::Elasticemail::API.is_a? Class
   end
 
-  def test_call_api
-    elasticemail = ::Elasticemail::API.new "randomapi"
+  def test_call_list_blocked_email
+    # insert a valid key
+    elasticemail = ::Elasticemail::API.new "randomkey"
     assert elasticemail
     response = elasticemail.contact_load_blocked
-    assert response.is_a? Hash
+    assert response.is_a? Array
   end
 end

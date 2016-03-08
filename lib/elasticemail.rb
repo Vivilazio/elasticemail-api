@@ -8,9 +8,28 @@ module Elasticemail
       @apikey = apikey
     end
 
-    def contact_load_blocked
+    # convenience methods
+    def contact_load_blocked search=""
       url = "#{BASE_API_URI}/contact/loadblocked"
-      call_api_get(url,{search: "text", status: "Abuse"}).merge(call_api_get(url,{search: "text", status: "Bounced"}))
+      abuse = get("contact/loadblocked", {search: search, status: "Abuse"})
+      bounced = get("contact/loadblocked",{search: search, status: "Bounced"})
+      if abuse["success"] == "true" || bounced["success"] == true
+        abuse["data"]+bounced["data"]
+      else
+        raise StandardError, "Error retriving data"
+      end
+    end
+
+    # generic get method
+    def get api_url, msg_info={}
+      url = "#{BASE_API_URI}/#{api_url}"
+      call_api_get(url, msg_info)
+    end
+
+    # generic post method
+    def post api_url, msg_info={}
+      url = "#{BASE_API_URI}/#{api_url}"
+      res = call_api_post(url, msg_info)
     end
 
     private
